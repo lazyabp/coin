@@ -1,6 +1,10 @@
-﻿using System;
+using LazyAbp.CoinKit.Spreads;
+using LazyAbp.CoinKit.Coupons;
+using LazyAbp.CoinKit.Coins;
+using System;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp;
+using Volo.Abp.EntityFrameworkCore.Modeling;
 
 namespace LazyAbp.CoinKit.EntityFrameworkCore
 {
@@ -38,6 +42,88 @@ namespace LazyAbp.CoinKit.EntityFrameworkCore
                 b.HasIndex(q => q.CreationTime);
             });
             */
+
+
+            builder.Entity<CoinAction>(b =>
+            {
+                b.ToTable(options.TablePrefix + "CoinActions", options.Schema);
+                b.ConfigureByConvention(); 
+                
+
+                /* Configure more properties here */
+            });
+
+
+            builder.Entity<CoinOrder>(b =>
+            {
+                b.ToTable(options.TablePrefix + "CoinOrders", options.Schema);
+                b.ConfigureByConvention();
+
+                b.HasIndex(q => q.OrderNo);
+                b.HasIndex(q => q.TradeNo);
+                /* Configure more properties here */
+            });
+
+
+            builder.Entity<CoinProduct>(b =>
+            {
+                b.ToTable(options.TablePrefix + "CoinProducts", options.Schema);
+                b.ConfigureByConvention(); 
+                
+
+                /* Configure more properties here */
+            });
+
+
+            builder.Entity<CoinWallet>(b =>
+            {
+                b.ToTable(options.TablePrefix + "CoinWallets", options.Schema);
+                b.ConfigureByConvention();
+
+                b.HasIndex(q => q.UserId).IsUnique();
+                /* Configure more properties here */
+            });
+
+
+            builder.Entity<CoinWalletLog>(b =>
+            {
+                b.ToTable(options.TablePrefix + "CoinWalletLogs", options.Schema);
+                b.ConfigureByConvention();
+
+                b.HasIndex(q => q.UserId);
+                /* Configure more properties here */
+            });
+
+
+            builder.Entity<Coupon>(b =>
+            {
+                b.ToTable(options.TablePrefix + "Coupons", options.Schema);
+                b.ConfigureByConvention();
+
+                b.HasIndex(q => q.SerialNumber).IsUnique();
+                /* Configure more properties here */
+            });
+
+
+            builder.Entity<SpreadInvite>(b =>
+            {
+                b.ToTable(options.TablePrefix + "SpreadInvites", options.Schema);
+                b.ConfigureByConvention();
+
+                b.HasIndex(q => q.UserId);
+                /* Configure more properties here */
+            });
+
+
+            builder.Entity<SpreadUser>(b =>
+            {
+                b.ToTable(options.TablePrefix + "SpreadUsers", options.Schema);
+                b.ConfigureByConvention();
+
+                b.HasIndex(q => q.UserId).IsUnique();
+                b.HasIndex(q => q.SpreadCode).IsUnique();
+                /* Configure more properties here */
+            });
         }
     }
 }

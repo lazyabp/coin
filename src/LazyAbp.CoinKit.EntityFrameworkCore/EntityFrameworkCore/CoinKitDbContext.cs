@@ -1,6 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
+using LazyAbp.CoinKit.Coins;
+using LazyAbp.CoinKit.Coupons;
+using LazyAbp.CoinKit.Spreads;
 
 namespace LazyAbp.CoinKit.EntityFrameworkCore
 {
@@ -10,6 +13,14 @@ namespace LazyAbp.CoinKit.EntityFrameworkCore
         /* Add DbSet for each Aggregate Root here. Example:
          * public DbSet<Question> Questions { get; set; }
          */
+        public DbSet<CoinAction> CoinActions { get; set; }
+        public DbSet<CoinOrder> CoinOrders { get; set; }
+        public DbSet<CoinProduct> CoinProducts { get; set; }
+        public DbSet<CoinWallet> CoinWallets { get; set; }
+        public DbSet<CoinWalletLog> CoinWalletLogs { get; set; }
+        public DbSet<Coupon> Coupons { get; set; }
+        public DbSet<SpreadInvite> SpreadInvites { get; set; }
+        public DbSet<SpreadUser> SpreadUsers { get; set; }
 
         public CoinKitDbContext(DbContextOptions<CoinKitDbContext> options) 
             : base(options)

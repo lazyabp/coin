@@ -21,4 +21,8 @@
     <Content Remove="Localization\CoinKit\*.json" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Spreads\" />
+  </ItemGroup>
+
 </Project>
