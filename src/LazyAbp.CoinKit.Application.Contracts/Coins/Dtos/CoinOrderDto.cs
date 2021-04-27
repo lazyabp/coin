@@ -18,6 +18,6 @@ namespace LazyAbp.CoinKit.Coins.Dtos
 
         public DateTime? PaymentTime { get; set; }
 
-        public CoinProduct Product { get; set; }
+        public CoinProductDto Product { get; set; }
     }
 }
