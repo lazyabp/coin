@@ -17,7 +17,7 @@ namespace LazyAbp.CoinKit.Permissions
 
             var coinOrderPermission = myGroup.AddPermission(CoinKitPermissions.CoinOrder.Default, L("Permission:CoinOrder"));
             coinOrderPermission.AddChild(CoinKitPermissions.CoinOrder.Create, L("Permission:Create"));
-            coinOrderPermission.AddChild(CoinKitPermissions.CoinOrder.Update, L("Permission:Update"));
+            coinOrderPermission.AddChild(CoinKitPermissions.CoinOrder.Management, L("Permission:Management"));
             coinOrderPermission.AddChild(CoinKitPermissions.CoinOrder.Delete, L("Permission:Delete"));
 
             var coinProductPermission = myGroup.AddPermission(CoinKitPermissions.CoinProduct.Default, L("Permission:CoinProduct"));
@@ -26,14 +26,11 @@ namespace LazyAbp.CoinKit.Permissions
             coinProductPermission.AddChild(CoinKitPermissions.CoinProduct.Delete, L("Permission:Delete"));
 
             var coinWalletPermission = myGroup.AddPermission(CoinKitPermissions.CoinWallet.Default, L("Permission:CoinWallet"));
-            coinWalletPermission.AddChild(CoinKitPermissions.CoinWallet.Create, L("Permission:Create"));
-            coinWalletPermission.AddChild(CoinKitPermissions.CoinWallet.Update, L("Permission:Update"));
-            coinWalletPermission.AddChild(CoinKitPermissions.CoinWallet.Delete, L("Permission:Delete"));
+            coinWalletPermission.AddChild(CoinKitPermissions.CoinWallet.Management, L("Permission:Management"));
+            coinWalletPermission.AddChild(CoinKitPermissions.CoinWallet.Reset, L("Permission:Reset"));
 
             var coinWalletLogPermission = myGroup.AddPermission(CoinKitPermissions.CoinWalletLog.Default, L("Permission:CoinWalletLog"));
-            coinWalletLogPermission.AddChild(CoinKitPermissions.CoinWalletLog.Create, L("Permission:Create"));
-            coinWalletLogPermission.AddChild(CoinKitPermissions.CoinWalletLog.Update, L("Permission:Update"));
-            coinWalletLogPermission.AddChild(CoinKitPermissions.CoinWalletLog.Delete, L("Permission:Delete"));
+            coinWalletLogPermission.AddChild(CoinKitPermissions.CoinWalletLog.Management, L("Permission:Management"));
 
             var couponPermission = myGroup.AddPermission(CoinKitPermissions.Coupon.Default, L("Permission:Coupon"));
             couponPermission.AddChild(CoinKitPermissions.Coupon.Create, L("Permission:Create"));
@@ -41,14 +38,12 @@ namespace LazyAbp.CoinKit.Permissions
             couponPermission.AddChild(CoinKitPermissions.Coupon.Delete, L("Permission:Delete"));
 
             var spreadInvitePermission = myGroup.AddPermission(CoinKitPermissions.SpreadInvite.Default, L("Permission:SpreadInvite"));
-            spreadInvitePermission.AddChild(CoinKitPermissions.SpreadInvite.Create, L("Permission:Create"));
-            spreadInvitePermission.AddChild(CoinKitPermissions.SpreadInvite.Update, L("Permission:Update"));
             spreadInvitePermission.AddChild(CoinKitPermissions.SpreadInvite.Delete, L("Permission:Delete"));
 
             var spreadUserPermission = myGroup.AddPermission(CoinKitPermissions.SpreadUser.Default, L("Permission:SpreadUser"));
-            spreadUserPermission.AddChild(CoinKitPermissions.SpreadUser.Create, L("Permission:Create"));
+            spreadUserPermission.AddChild(CoinKitPermissions.SpreadUser.Management, L("Permission:Management"));
             spreadUserPermission.AddChild(CoinKitPermissions.SpreadUser.Update, L("Permission:Update"));
-            spreadUserPermission.AddChild(CoinKitPermissions.SpreadUser.Delete, L("Permission:Delete"));
+            spreadUserPermission.AddChild(CoinKitPermissions.SpreadUser.BindInviter, L("Permission:BindInviter"));
         }
 
         private static LocalizableString L(string name)

@@ -22,7 +22,7 @@ namespace LazyAbp.CoinKit.Permissions
         public class CoinOrder
         {
             public const string Default = GroupName + ".CoinOrder";
-            public const string Update = Default + ".Update";
+            public const string Management = Default + ".Management";
             public const string Create = Default + ".Create";
             public const string Delete = Default + ".Delete";
         }
@@ -38,17 +38,14 @@ namespace LazyAbp.CoinKit.Permissions
         public class CoinWallet
         {
             public const string Default = GroupName + ".CoinWallet";
-            public const string Update = Default + ".Update";
-            public const string Create = Default + ".Create";
-            public const string Delete = Default + ".Delete";
+            public const string Management = Default + ".Management";
+            public const string Reset = Default + ".Reset";
         }
 
         public class CoinWalletLog
         {
             public const string Default = GroupName + ".CoinWalletLog";
-            public const string Update = Default + ".Update";
-            public const string Create = Default + ".Create";
-            public const string Delete = Default + ".Delete";
+            public const string Management = Default + ".Management";
         }
 
         public class Coupon
@@ -62,8 +59,6 @@ namespace LazyAbp.CoinKit.Permissions
         public class SpreadInvite
         {
             public const string Default = GroupName + ".SpreadInvite";
-            public const string Update = Default + ".Update";
-            public const string Create = Default + ".Create";
             public const string Delete = Default + ".Delete";
         }
 
@@ -71,8 +66,8 @@ namespace LazyAbp.CoinKit.Permissions
         {
             public const string Default = GroupName + ".SpreadUser";
             public const string Update = Default + ".Update";
-            public const string Create = Default + ".Create";
-            public const string Delete = Default + ".Delete";
+            public const string Management = Default + ".Management";
+            public const string BindInviter = Default + ".BindInviter";
         }
     }
 }

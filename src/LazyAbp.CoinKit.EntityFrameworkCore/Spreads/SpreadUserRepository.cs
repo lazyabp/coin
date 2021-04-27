@@ -37,11 +37,12 @@ namespace LazyAbp.CoinKit.Spreads
 
         public async Task<long> GetCountAsync(
             Guid? userId = null,
+            Guid? inviterUserId = null,
             string filter = null,
             CancellationToken cancellationToken = default
         )
         {
-            var query = await GetListQuery(userId, filter);
+            var query = await GetListQuery(userId, inviterUserId, filter);
 
             return await query
                 .LongCountAsync(cancellationToken);
@@ -52,11 +53,12 @@ namespace LazyAbp.CoinKit.Spreads
             int maxResultCount = 10,
             int skipCount = 0,
             Guid? userId = null,
+            Guid? inviterUserId = null,
             string filter = null,
             CancellationToken cancellationToken = default
         )
         {
-            var query = await GetListQuery(userId, filter);
+            var query = await GetListQuery(userId, inviterUserId, filter);
 
             return await query
                 .OrderBy(sorting ?? "creationTime DESC")
@@ -66,6 +68,7 @@ namespace LazyAbp.CoinKit.Spreads
 
         protected async Task<IQueryable<SpreadUser>> GetListQuery(
             Guid? userId = null,
+            Guid? inviterUserId = null,
             string filter = null
         )
         {
@@ -74,6 +77,7 @@ namespace LazyAbp.CoinKit.Spreads
             return dbSet
                 .AsNoTracking()
                 .WhereIf(userId.HasValue, e => e.UserId == userId)
+                .WhereIf(inviterUserId.HasValue, e => e.InviterUserId == inviterUserId)
                 .WhereIf(!filter.IsNullOrEmpty(),
                     e => false
                     || e.SpreadCode.Contains(filter)

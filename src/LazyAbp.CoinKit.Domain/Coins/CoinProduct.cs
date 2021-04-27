@@ -43,7 +43,6 @@ namespace LazyAbp.CoinKit.Coins
             decimal retailPrice,
             decimal salePrice,
             int costCoins,
-            int soldQuantity,
             string description,
             bool isActive,
             int displayOrder
@@ -55,10 +54,36 @@ namespace LazyAbp.CoinKit.Coins
             RetailPrice = retailPrice;
             SalePrice = salePrice;
             CostCoins = costCoins;
-            SoldQuantity = soldQuantity;
+            SoldQuantity = 0;
             Description = description;
             IsActive = isActive;
             DisplayOrder = displayOrder;
+        }
+
+        public void Update(
+            string name,
+            string thumbnail,
+            decimal retailPrice,
+            decimal salePrice,
+            int costCoins,
+            string description,
+            bool isActive,
+            int displayOrder
+        )
+        {
+            Name = name;
+            Thumbnail = thumbnail;
+            RetailPrice = retailPrice;
+            SalePrice = salePrice;
+            CostCoins = costCoins;
+            Description = description;
+            IsActive = isActive;
+            DisplayOrder = displayOrder;
+        }
+
+        public void SetSoldQuantity(int soldQuantity)
+        {
+            SoldQuantity = soldQuantity;
         }
     }
 }

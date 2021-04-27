@@ -41,15 +41,29 @@ namespace LazyAbp.CoinKit.Coupons
             Guid? tenantId,
             string serialNumber,
             int amountCoins,
-            bool isActive,
-            Guid? userId,
-            DateTime? claimedTime
+            bool isActive
         ) : base(id)
         {
             TenantId = tenantId;
             SerialNumber = serialNumber;
             AmountCoins = amountCoins;
             IsActive = isActive;
+        }
+
+        public void Update(
+            int amountCoins,
+            bool isActive
+        )
+        {
+            AmountCoins = amountCoins;
+            IsActive = isActive;
+        }
+
+        public void SetAsClaimed(Guid userId, DateTime claimedTime)
+        {
+            if (UserId.HasValue)
+                throw new Exception("TheCouponHasBeenUsed");
+
             UserId = userId;
             ClaimedTime = claimedTime;
         }

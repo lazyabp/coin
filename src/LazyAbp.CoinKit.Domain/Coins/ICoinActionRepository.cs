@@ -8,6 +8,8 @@ namespace LazyAbp.CoinKit.Coins
 {
     public interface ICoinActionRepository : IRepository<CoinAction, Guid>
     {
+        Task<CoinAction> GetByActionTypeAsync(CoinActionType actionType, CancellationToken cancellationToken = default);
+
         Task<int> GetCountAsync(
             CoinActionType? actionType = null,
             string filter = null,

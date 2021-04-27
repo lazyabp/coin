@@ -14,6 +14,7 @@ namespace LazyAbp.CoinKit.Spreads
 
         Task<long> GetCountAsync(
             Guid? userId = null,
+            Guid? inviterUserId = null,
             string filter = null,
             CancellationToken cancellationToken = default
         );
@@ -23,6 +24,7 @@ namespace LazyAbp.CoinKit.Spreads
             int maxResultCount = 10,
             int skipCount = 0,
             Guid? userId = null,
+            Guid? inviterUserId = null,
             string filter = null,
             CancellationToken cancellationToken = default
         );

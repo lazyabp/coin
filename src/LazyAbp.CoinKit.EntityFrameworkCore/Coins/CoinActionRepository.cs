@@ -17,6 +17,15 @@ namespace LazyAbp.CoinKit.Coins
         {
         }
 
+        public async Task<CoinAction> GetByActionTypeAsync(CoinActionType actionType, CancellationToken cancellationToken = default)
+        {
+            var dbSet = await GetDbSetAsync();
+
+            return await dbSet
+                .Where(q => q.ActionType == actionType)
+                .FirstOrDefaultAsync(cancellationToken);
+        }
+
         public async Task<int> GetCountAsync(
             CoinActionType? actionType = null,
             string filter = null,

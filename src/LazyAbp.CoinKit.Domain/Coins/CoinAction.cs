@@ -44,5 +44,18 @@ namespace LazyAbp.CoinKit.Coins
             BeginTime = beginTime;
             ExpireTime = expireTime;
         }
+
+        public void Update(
+            string title,
+            int rewardCoins,
+            DateTime beginTime,
+            DateTime? expireTime
+        )
+        {
+            Title = title;
+            RewardCoins = rewardCoins;
+            BeginTime = beginTime;
+            ExpireTime = expireTime;
+        }
     }
 }

@@ -40,15 +40,19 @@ namespace LazyAbp.CoinKit.Spreads
             Guid id,
             Guid? tenantId,
             Guid userId,
-            string spreadCode,
-            Guid? inviterUserId,
-            string inviterUser,
-            string inviterSpreadCode
+            string spreadCode
         ) : base(id)
         {
             TenantId = tenantId;
             UserId = userId;
             SpreadCode = spreadCode;
+        }
+
+        public void SetInviter(Guid inviterUserId, string inviterUser, string inviterSpreadCode)
+        {
+            if (InviterUserId.HasValue)
+                throw new Exception("InviterUserHasBeenBind");
+
             InviterUserId = inviterUserId;
             InviterUser = inviterUser;
             InviterSpreadCode = inviterSpreadCode;

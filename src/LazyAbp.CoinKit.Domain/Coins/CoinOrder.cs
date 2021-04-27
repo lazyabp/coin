@@ -29,6 +29,23 @@ namespace LazyAbp.CoinKit.Coins
         [ForeignKey("CoinProductId")]
         public CoinProduct Product { get; private set; }
 
+        protected CoinOrder()
+        {
+        }
+
+        public CoinOrder(
+            Guid id,
+            Guid? tenantId,
+            Guid coinProductId,
+            PaymentGateway? gateway
+        ) : base(id)
+        {
+            TenantId = tenantId;
+            CoinProductId = coinProductId;
+            Gateway = gateway;
+            Status = PaymentStatus.NotPaid;
+        }
+
         public void SetAsCancelled()
         {
             if (Status == PaymentStatus.NotPaid)
@@ -66,32 +83,6 @@ namespace LazyAbp.CoinKit.Coins
             {
                 OrderNo = orderNo;
             }
-        }
-
-        protected CoinOrder()
-        {
-        }
-
-        public CoinOrder(
-            Guid id,
-            Guid? tenantId,
-            Guid coinProductId,
-            PaymentGateway? gateway,
-            PaymentStatus status,
-            string orderNo,
-            string tradeNo,
-            DateTime? paymentTime,
-            CoinProduct product
-        ) : base(id)
-        {
-            TenantId = tenantId;
-            CoinProductId = coinProductId;
-            Gateway = gateway;
-            Status = status;
-            OrderNo = orderNo;
-            TradeNo = tradeNo;
-            PaymentTime = paymentTime;
-            Product = product;
         }
     }
 }
