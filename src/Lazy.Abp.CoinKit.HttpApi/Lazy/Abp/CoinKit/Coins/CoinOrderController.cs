@@ -31,20 +31,20 @@ namespace Lazy.Abp.CoinKit.Coins
         }
 
         [HttpGet]
-        public Task<PagedResultDto<CoinOrderDto>> GetListAsync(GetCoinOrderListRequestDto input)
+        public Task<PagedResultDto<CoinOrderDto>> GetListAsync(CoinOrderListRequestDto input)
         {
             return _service.GetListAsync(input);
         }
 
         [HttpGet]
         [Route("management")]
-        public Task<PagedResultDto<CoinOrderDto>> GetManagementListAsync(GetCoinOrderListRequestDto input)
+        public Task<PagedResultDto<CoinOrderDto>> GetManagementListAsync(CoinOrderListRequestDto input)
         {
             return _service.GetManagementListAsync(input);
         }
 
         [HttpPost]
-        public Task<CoinOrderDto> CreateAsync(CreateUpdateCoinOrderDto input)
+        public Task<CoinOrderDto> CreateAsync(CoinOrderCreateUpdateDto input)
         {
             return _service.CreateAsync(input);
         }

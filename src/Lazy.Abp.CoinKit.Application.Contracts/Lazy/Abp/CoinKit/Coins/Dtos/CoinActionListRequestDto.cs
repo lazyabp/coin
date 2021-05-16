@@ -5,7 +5,7 @@ using Volo.Abp.Application.Dtos;
 
 namespace Lazy.Abp.CoinKit.Coins.Dtos
 {
-    public class GetCoinActionListRequestDto : PagedAndSortedResultRequestDto
+    public class CoinActionListRequestDto : PagedAndSortedResultRequestDto
     {
         public CoinActionType? ActionType { get; set; }
 

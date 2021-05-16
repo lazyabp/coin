@@ -5,7 +5,7 @@ using Volo.Abp.Application.Dtos;
 
 namespace Lazy.Abp.CoinKit.Coins.Dtos
 {
-    public class GetCoinWalletLogListRequestDto : PagedAndSortedResultRequestDto
+    public class CoinWalletLogListRequestDto : PagedAndSortedResultRequestDto
     {
         public Guid? UserId { get; set; }
         public bool? IsOut { get; set; }

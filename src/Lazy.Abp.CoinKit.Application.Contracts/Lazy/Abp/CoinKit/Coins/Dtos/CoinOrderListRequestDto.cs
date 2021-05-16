@@ -5,13 +5,14 @@ using Volo.Abp.Application.Dtos;
 
 namespace Lazy.Abp.CoinKit.Coins.Dtos
 {
-    public class GetCoinProductListRequestDto : PagedAndSortedResultRequestDto
+    public class CoinOrderListRequestDto : PagedAndSortedResultRequestDto
     {
-        public bool? IsActive { get; set; }
-        public decimal? MinPrice { get; set; }
-        public decimal? MaxPrice { get; set; }
+        public Guid? UserId { get; set; }
+        public PaymentGateway? Gateway { get; set; }
+        public PaymentStatus? Status { get; set; }
         public DateTime? CreationAfter { get; set; }
         public DateTime? CreationBefore { get; set; }
         public string Filter { get; set; }
+        public bool IncludeDetails { get; set; }
     }
 }

@@ -10,7 +10,7 @@ namespace Lazy.Abp.CoinKit.Coins
     {
         Task<CoinWalletDto> GetAsync();
 
-        Task<PagedResultDto<CoinWalletDto>> GetListAsync(GetCoinWalletListRequestDto input);
+        Task<PagedResultDto<CoinWalletDto>> GetListAsync(CoinWalletListRequestDto input);
 
         Task<CoinWalletDto> ResetAsync(Guid userId);
     }

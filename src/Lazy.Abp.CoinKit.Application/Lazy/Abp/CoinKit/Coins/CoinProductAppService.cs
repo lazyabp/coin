@@ -27,7 +27,7 @@ namespace Lazy.Abp.CoinKit.Coins
         }
 
         [Authorize]
-        public async Task<PagedResultDto<CoinProductDto>> GetListAsync(GetCoinProductListRequestDto input)
+        public async Task<PagedResultDto<CoinProductDto>> GetListAsync(CoinProductListRequestDto input)
         {
             var count = await _repository.GetCountAsync(input.IsActive, input.MinPrice, input.MaxPrice, input.CreationAfter, input.CreationBefore, input.Filter);
             var list = await _repository.GetListAsync(input.Sorting, input.MaxResultCount, input.SkipCount,
@@ -40,7 +40,7 @@ namespace Lazy.Abp.CoinKit.Coins
         }
 
         [Authorize(CoinKitPermissions.CoinProduct.Create)]
-        public async Task<CoinProductDto> CreateAsync(CreateUpdateCoinProductDto input)
+        public async Task<CoinProductDto> CreateAsync(CoinProductCreateUpdateDto input)
         {
             var product = new CoinProduct(GuidGenerator.Create(), CurrentUser.TenantId, input.Name, input.Thumbnail,
                 input.RetailPrice, input.SalePrice, input.CostCoins, input.Description, input.IsActive, input.DisplayOrder);
@@ -50,7 +50,7 @@ namespace Lazy.Abp.CoinKit.Coins
         }
 
         [Authorize(CoinKitPermissions.CoinProduct.Update)]
-        public async Task<CoinProductDto> UpdateAsync(Guid id, CreateUpdateCoinProductDto input)
+        public async Task<CoinProductDto> UpdateAsync(Guid id, CoinProductCreateUpdateDto input)
         {
             var product = await _repository.GetAsync(id);
             product.Update(input.Name, input.Thumbnail, input.RetailPrice, input.SalePrice, input.CostCoins, input.Description, input.IsActive, input.DisplayOrder);

@@ -38,14 +38,14 @@ namespace Lazy.Abp.CoinKit.Spreads
         }
 
         [HttpGet]
-        public Task<PagedResultDto<SpreadUserDto>> GetListAsync(GetSpreadUserListRequestDto input)
+        public Task<PagedResultDto<SpreadUserDto>> GetListAsync(SpreadUserListRequestDto input)
         {
             return _service.GetListAsync(input);
         }
 
         [HttpPut]
         [Route("{id}")]
-        public Task<SpreadUserDto> UpdateAsync(Guid id, CreateUpdateSpreadUserDto input)
+        public Task<SpreadUserDto> UpdateAsync(Guid id, SpreadUserCreateUpdateDto input)
         {
             return _service.UpdateAsync(id, input);
         }

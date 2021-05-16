@@ -28,7 +28,7 @@ namespace Lazy.Abp.CoinKit.Coins
         }
 
         [Authorize]
-        public async Task<PagedResultDto<CoinWalletLogDto>> GetListAsync(GetCoinWalletLogListRequestDto input)
+        public async Task<PagedResultDto<CoinWalletLogDto>> GetListAsync(CoinWalletLogListRequestDto input)
         {
             var count = await _repository.GetCountAsync(CurrentUser.GetId(), input.IsOut, input.TypeName, 
                 input.MinAmount, input.MaxAmount, input.CreationAfter, input.CreationBefore, input.Filter);
@@ -42,7 +42,7 @@ namespace Lazy.Abp.CoinKit.Coins
         }
 
         [Authorize(CoinKitPermissions.CoinWalletLog.Management)]
-        public async Task<PagedResultDto<CoinWalletLogDto>> GetManagementListAsync(GetCoinWalletLogListRequestDto input)
+        public async Task<PagedResultDto<CoinWalletLogDto>> GetManagementListAsync(CoinWalletLogListRequestDto input)
         {
             var count = await _repository.GetCountAsync(input.UserId, input.IsOut, input.TypeName,
                 input.MinAmount, input.MaxAmount, input.CreationAfter, input.CreationBefore, input.Filter);

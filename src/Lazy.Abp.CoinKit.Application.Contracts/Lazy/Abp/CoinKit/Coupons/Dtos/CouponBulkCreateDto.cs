@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Lazy.Abp.CoinKit.Coupons.Dtos
 {
-    public class CreateCouponBulkDto
+    public class CouponBulkCreateDto
     {
         public int Count { get; set; }
 

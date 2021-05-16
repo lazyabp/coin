@@ -17,7 +17,7 @@ namespace Lazy.Abp.CoinKit.Spreads
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task<PagedResultDto<SpreadUserDto>> GetListAsync(GetSpreadUserListRequestDto input);
+        Task<PagedResultDto<SpreadUserDto>> GetListAsync(SpreadUserListRequestDto input);
 
         /// <summary>
         /// №ЬАн
@@ -25,7 +25,7 @@ namespace Lazy.Abp.CoinKit.Spreads
         /// <param name="id"></param>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task<SpreadUserDto> UpdateAsync(Guid id, CreateUpdateSpreadUserDto input);
+        Task<SpreadUserDto> UpdateAsync(Guid id, SpreadUserCreateUpdateDto input);
 
         Task SetInviterAsync(Guid id, Guid inviterUserId);
 

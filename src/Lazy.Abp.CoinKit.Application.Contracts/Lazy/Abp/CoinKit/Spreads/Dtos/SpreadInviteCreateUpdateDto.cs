@@ -3,7 +3,7 @@ using System;
 namespace Lazy.Abp.CoinKit.Spreads.Dtos
 {
     [Serializable]
-    public class CreateUpdateSpreadInviteDto
+    public class SpreadInviteCreateUpdateDto
     {
         public Guid UserId { get; set; }
 

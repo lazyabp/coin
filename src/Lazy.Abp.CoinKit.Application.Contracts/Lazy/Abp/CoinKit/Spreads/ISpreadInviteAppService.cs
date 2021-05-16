@@ -10,7 +10,7 @@ namespace Lazy.Abp.CoinKit.Spreads
     {
         Task<SpreadInviteDto> GetAsync(Guid id);
 
-        Task<PagedResultDto<SpreadInviteDto>> GetListAsync(GetSpreadInviteListRequestDto input);
+        Task<PagedResultDto<SpreadInviteDto>> GetListAsync(SpreadInviteListRequestDto input);
 
         Task DeleteAsync(Guid id);
     }

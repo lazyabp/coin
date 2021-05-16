@@ -31,7 +31,7 @@ namespace Lazy.Abp.CoinKit.Spreads
         }
 
         [HttpGet]
-        public Task<PagedResultDto<SpreadInviteDto>> GetListAsync(GetSpreadInviteListRequestDto input)
+        public Task<PagedResultDto<SpreadInviteDto>> GetListAsync(SpreadInviteListRequestDto input)
         {
             return _service.GetListAsync(input);
         }

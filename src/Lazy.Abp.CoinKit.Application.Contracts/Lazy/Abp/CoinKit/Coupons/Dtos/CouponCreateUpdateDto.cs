@@ -3,7 +3,7 @@ using System;
 namespace Lazy.Abp.CoinKit.Coupons.Dtos
 {
     [Serializable]
-    public class CreateUpdateCouponDto
+    public class CouponCreateUpdateDto
     {
         public int AmountCoins { get; set; }
 

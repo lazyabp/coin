@@ -10,11 +10,11 @@ namespace Lazy.Abp.CoinKit.Coins
     {
         Task<CoinProductDto> GetAsync(Guid id);
 
-        Task<PagedResultDto<CoinProductDto>> GetListAsync(GetCoinProductListRequestDto input);
+        Task<PagedResultDto<CoinProductDto>> GetListAsync(CoinProductListRequestDto input);
 
-        Task<CoinProductDto> CreateAsync(CreateUpdateCoinProductDto input);
+        Task<CoinProductDto> CreateAsync(CoinProductCreateUpdateDto input);
 
-        Task<CoinProductDto> UpdateAsync(Guid id, CreateUpdateCoinProductDto input);
+        Task<CoinProductDto> UpdateAsync(Guid id, CoinProductCreateUpdateDto input);
 
         Task DeleteAsync(Guid id);
     }

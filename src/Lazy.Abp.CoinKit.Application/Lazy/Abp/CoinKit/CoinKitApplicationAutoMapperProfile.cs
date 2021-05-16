@@ -16,21 +16,21 @@ namespace Lazy.Abp.CoinKit
              * Alternatively, you can split your mapping configurations
              * into multiple profile classes for a better organization. */
             CreateMap<CoinAction, CoinActionDto>();
-            CreateMap<CreateUpdateCoinActionDto, CoinAction>(MemberList.Source);
+            CreateMap<CoinActionCreateUpdateDto, CoinAction>(MemberList.Source);
             CreateMap<CoinOrder, CoinOrderDto>();
-            CreateMap<CreateUpdateCoinOrderDto, CoinOrder>(MemberList.Source);
+            CreateMap<CoinOrderCreateUpdateDto, CoinOrder>(MemberList.Source);
             CreateMap<CoinProduct, CoinProductDto>();
-            CreateMap<CreateUpdateCoinProductDto, CoinProduct>(MemberList.Source);
+            CreateMap<CoinProductCreateUpdateDto, CoinProduct>(MemberList.Source);
             CreateMap<CoinWallet, CoinWalletDto>();
-            CreateMap<CreateUpdateCoinWalletDto, CoinWallet>(MemberList.Source);
+            CreateMap<CoinWalletCreateUpdateDto, CoinWallet>(MemberList.Source);
             CreateMap<CoinWalletLog, CoinWalletLogDto>();
-            CreateMap<CreateUpdateCoinWalletLogDto, CoinWalletLog>(MemberList.Source);
+            CreateMap<CoinWalletLogCreateUpdateDto, CoinWalletLog>(MemberList.Source);
             CreateMap<Coupon, CouponDto>();
-            CreateMap<CreateUpdateCouponDto, Coupon>(MemberList.Source);
+            CreateMap<CouponCreateUpdateDto, Coupon>(MemberList.Source);
             CreateMap<SpreadInvite, SpreadInviteDto>();
-            CreateMap<CreateUpdateSpreadInviteDto, SpreadInvite>(MemberList.Source);
+            CreateMap<SpreadInviteCreateUpdateDto, SpreadInvite>(MemberList.Source);
             CreateMap<SpreadUser, SpreadUserDto>();
-            CreateMap<CreateUpdateSpreadUserDto, SpreadUser>(MemberList.Source);
+            CreateMap<SpreadUserCreateUpdateDto, SpreadUser>(MemberList.Source);
         }
     }
 }

@@ -31,27 +31,27 @@ namespace Lazy.Abp.CoinKit.Coupons
         }
 
         [HttpGet]
-        public Task<PagedResultDto<CouponDto>> GetListAsync(GetCouponListRequestDto input)
+        public Task<PagedResultDto<CouponDto>> GetListAsync(CouponListRequestDto input)
         {
             return _service.GetListAsync(input);
         }
 
         [HttpPost]
-        public Task<CouponDto> CreateAsync(CreateUpdateCouponDto input)
+        public Task<CouponDto> CreateAsync(CouponCreateUpdateDto input)
         {
             return _service.CreateAsync(input);
         }
 
         [HttpPost]
         [Route("bulk-create")]
-        public Task CreateBulkAsync(CreateCouponBulkDto input)
+        public Task CreateBulkAsync(CouponBulkCreateDto input)
         {
             return _service.CreateBulkAsync(input);
         }
 
         [HttpPut]
         [Route("{id}")]
-        public Task<CouponDto> UpdateAsync(Guid id, CreateUpdateCouponDto input)
+        public Task<CouponDto> UpdateAsync(Guid id, CouponCreateUpdateDto input)
         {
             return _service.UpdateAsync(id, input);
         }

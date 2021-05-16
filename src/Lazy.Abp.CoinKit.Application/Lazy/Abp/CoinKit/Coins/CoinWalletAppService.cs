@@ -35,7 +35,7 @@ namespace Lazy.Abp.CoinKit.Coins
         }
 
         [Authorize(CoinKitPermissions.CoinWallet.Management)]
-        public async Task<PagedResultDto<CoinWalletDto>> GetListAsync(GetCoinWalletListRequestDto input)
+        public async Task<PagedResultDto<CoinWalletDto>> GetListAsync(CoinWalletListRequestDto input)
         {
             var count = await _repository.GetCountAsync(input.UserId, input.MinBalance, input.MaxBalance, input.Filter);
             var list = await _repository.GetListAsync(input.Sorting, input.MaxResultCount,

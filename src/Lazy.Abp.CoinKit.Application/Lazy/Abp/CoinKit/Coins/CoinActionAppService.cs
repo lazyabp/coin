@@ -28,7 +28,7 @@ namespace Lazy.Abp.CoinKit.Coins
         }
 
         [Authorize(CoinKitPermissions.CoinAction.Default)]
-        public async Task<PagedResultDto<CoinActionDto>> GetListAsync(GetCoinActionListRequestDto input)
+        public async Task<PagedResultDto<CoinActionDto>> GetListAsync(CoinActionListRequestDto input)
         {
             var count = await _repository.GetCountAsync(input.ActionType, input.Filter);
             var list = await _repository.GetListAsync(input.Sorting, input.MaxResultCount, input.SkipCount, input.ActionType, input.Filter);
@@ -40,7 +40,7 @@ namespace Lazy.Abp.CoinKit.Coins
         }
 
         [Authorize(CoinKitPermissions.CoinAction.Create)]
-        public async Task<CoinActionDto> CreateAsync(CreateUpdateCoinActionDto input)
+        public async Task<CoinActionDto> CreateAsync(CoinActionCreateUpdateDto input)
         {
             var act = await _repository.GetByActionTypeAsync(input.ActionType);
             if (null != act)
@@ -54,7 +54,7 @@ namespace Lazy.Abp.CoinKit.Coins
         }
 
         [Authorize(CoinKitPermissions.CoinAction.Update)]
-        public async Task<CoinActionDto> UpdateAsync(Guid id, CreateUpdateCoinActionDto input)
+        public async Task<CoinActionDto> UpdateAsync(Guid id, CoinActionCreateUpdateDto input)
         {
             var act = await _repository.GetAsync(id);
             act.Update(input.Title, input.RewardCoins, input.BeginTime, input.ExpireTime);

@@ -28,7 +28,7 @@ namespace Lazy.Abp.CoinKit.Coupons
         }
 
         [Authorize(CoinKitPermissions.Coupon.Default)]
-        public async Task<PagedResultDto<CouponDto>> GetListAsync(GetCouponListRequestDto input)
+        public async Task<PagedResultDto<CouponDto>> GetListAsync(CouponListRequestDto input)
         {
             var count = await _repository.GetCountAsync(input.IsActive, input.IsClaimed, input.Filter);
             var list = await _repository.GetListAsync(input.Sorting, input.MaxResultCount, input.SkipCount, input.IsActive, input.IsClaimed, input.Filter);
@@ -40,7 +40,7 @@ namespace Lazy.Abp.CoinKit.Coupons
         }
 
         [Authorize(CoinKitPermissions.Coupon.Create)]
-        public async Task CreateBulkAsync(CreateCouponBulkDto input)
+        public async Task CreateBulkAsync(CouponBulkCreateDto input)
         {
             var coupons = new List<Coupon>();
 
@@ -56,7 +56,7 @@ namespace Lazy.Abp.CoinKit.Coupons
         }
 
         [Authorize(CoinKitPermissions.Coupon.Create)]
-        public async Task<CouponDto> CreateAsync(CreateUpdateCouponDto input)
+        public async Task<CouponDto> CreateAsync(CouponCreateUpdateDto input)
         {
             var coupon = new Coupon(GuidGenerator.Create(), CurrentUser.TenantId, "", input.AmountCoins, input.IsActive);
 
@@ -66,7 +66,7 @@ namespace Lazy.Abp.CoinKit.Coupons
         }
 
         [Authorize(CoinKitPermissions.Coupon.Update)]
-        public async Task<CouponDto> UpdateAsync(Guid id, CreateUpdateCouponDto input)
+        public async Task<CouponDto> UpdateAsync(Guid id, CouponCreateUpdateDto input)
         {
             var coupon = await _repository.GetAsync(id);
             coupon.Update(input.AmountCoins, input.IsActive);

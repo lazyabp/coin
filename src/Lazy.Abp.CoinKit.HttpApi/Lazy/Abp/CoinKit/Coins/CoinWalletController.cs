@@ -32,7 +32,7 @@ namespace Lazy.Abp.CoinKit.Coins
 
         [HttpGet]
         [Route("management")]
-        public Task<PagedResultDto<CoinWalletDto>> GetListAsync(GetCoinWalletListRequestDto input)
+        public Task<PagedResultDto<CoinWalletDto>> GetListAsync(CoinWalletListRequestDto input)
         {
             return _service.GetListAsync(input);
         }

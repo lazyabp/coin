@@ -43,7 +43,7 @@ namespace Lazy.Abp.CoinKit.Spreads
         }
 
         [Authorize(CoinKitPermissions.SpreadUser.Management)]
-        public async Task<PagedResultDto<SpreadUserDto>> GetListAsync(GetSpreadUserListRequestDto input)
+        public async Task<PagedResultDto<SpreadUserDto>> GetListAsync(SpreadUserListRequestDto input)
         {
             var count = await _repository.GetCountAsync(input.UserId, input.InviterUserId, input.Filter);
             var list = await _repository.GetListAsync(input.Sorting, input.MaxResultCount, input.SkipCount, input.UserId, input.InviterUserId, input.Filter);
@@ -55,7 +55,7 @@ namespace Lazy.Abp.CoinKit.Spreads
         }
 
         [Authorize(CoinKitPermissions.SpreadUser.Update)]
-        public Task<SpreadUserDto> UpdateAsync(Guid id, CreateUpdateSpreadUserDto input)
+        public Task<SpreadUserDto> UpdateAsync(Guid id, SpreadUserCreateUpdateDto input)
         {
             throw new NotImplementedException();
         }

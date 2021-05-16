@@ -28,7 +28,7 @@ namespace Lazy.Abp.CoinKit.Coins
         }
 
         [Authorize]
-        public async Task<PagedResultDto<CoinOrderDto>> GetListAsync(GetCoinOrderListRequestDto input)
+        public async Task<PagedResultDto<CoinOrderDto>> GetListAsync(CoinOrderListRequestDto input)
         {
             var count = await _repository.GetCountAsync(CurrentUser.GetId(), input.Gateway, 
                 input.Status, input.CreationAfter, input.CreationBefore, input.Filter, input.IncludeDetails);
@@ -42,7 +42,7 @@ namespace Lazy.Abp.CoinKit.Coins
         }
 
         [Authorize(CoinKitPermissions.CoinOrder.Management)]
-        public async Task<PagedResultDto<CoinOrderDto>> GetManagementListAsync(GetCoinOrderListRequestDto input)
+        public async Task<PagedResultDto<CoinOrderDto>> GetManagementListAsync(CoinOrderListRequestDto input)
         {
             var count = await _repository.GetCountAsync(input.UserId, input.Gateway,
                 input.Status, input.CreationAfter, input.CreationBefore, input.Filter, input.IncludeDetails);
@@ -56,7 +56,7 @@ namespace Lazy.Abp.CoinKit.Coins
         }
 
         [Authorize]
-        public async Task<CoinOrderDto> CreateAsync(CreateUpdateCoinOrderDto input)
+        public async Task<CoinOrderDto> CreateAsync(CoinOrderCreateUpdateDto input)
         {
             var order = new CoinOrder(GuidGenerator.Create(), CurrentUser.TenantId, input.CoinProductId, input.Gateway);
             await _repository.InsertAsync(order);

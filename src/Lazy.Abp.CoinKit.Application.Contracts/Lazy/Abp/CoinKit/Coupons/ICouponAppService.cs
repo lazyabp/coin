@@ -10,18 +10,18 @@ namespace Lazy.Abp.CoinKit.Coupons
     {
         Task<CouponDto> GetAsync(Guid id);
 
-        Task<PagedResultDto<CouponDto>> GetListAsync(GetCouponListRequestDto input);
+        Task<PagedResultDto<CouponDto>> GetListAsync(CouponListRequestDto input);
 
         /// <summary>
         /// 批量生成
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task CreateBulkAsync(CreateCouponBulkDto input);
+        Task CreateBulkAsync(CouponBulkCreateDto input);
 
-        Task<CouponDto> CreateAsync(CreateUpdateCouponDto input);
+        Task<CouponDto> CreateAsync(CouponCreateUpdateDto input);
 
-        Task<CouponDto> UpdateAsync(Guid id, CreateUpdateCouponDto input);
+        Task<CouponDto> UpdateAsync(Guid id, CouponCreateUpdateDto input);
 
         /// <summary>
         /// 认领
