@@ -25,7 +25,7 @@ namespace Lazy.Abp.CoinKit
                 options.Resources
                     .Add<CoinKitResource>("en")
                     .AddBaseTypes(typeof(AbpValidationResource))
-                    .AddVirtualJson("/Localization/CoinKit");
+                    .AddVirtualJson("/Lazy/Abp/CoinKit/Localization/CoinKit");
             });
 
             Configure<AbpExceptionLocalizationOptions>(options =>
