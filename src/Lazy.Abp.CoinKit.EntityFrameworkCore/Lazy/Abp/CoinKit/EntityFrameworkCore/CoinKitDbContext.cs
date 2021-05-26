@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
 using Lazy.Abp.CoinKit.Coins;
 using Lazy.Abp.CoinKit.Coupons;
 using Lazy.Abp.CoinKit.Spreads;
+using Lazy.Abp.CoinKit.CoinPurchaseds;
 
 namespace Lazy.Abp.CoinKit.EntityFrameworkCore
 {
@@ -14,13 +15,13 @@ namespace Lazy.Abp.CoinKit.EntityFrameworkCore
          * public DbSet<Question> Questions { get; set; }
          */
         public DbSet<CoinAction> CoinActions { get; set; }
-        public DbSet<CoinOrder> CoinOrders { get; set; }
         public DbSet<CoinProduct> CoinProducts { get; set; }
         public DbSet<CoinWallet> CoinWallets { get; set; }
         public DbSet<CoinWalletLog> CoinWalletLogs { get; set; }
         public DbSet<Coupon> Coupons { get; set; }
         public DbSet<SpreadInvite> SpreadInvites { get; set; }
         public DbSet<SpreadUser> SpreadUsers { get; set; }
+        public DbSet<CoinPurchased> CoinPurchaseds { get; set; }
 
         public CoinKitDbContext(DbContextOptions<CoinKitDbContext> options) 
             : base(options)

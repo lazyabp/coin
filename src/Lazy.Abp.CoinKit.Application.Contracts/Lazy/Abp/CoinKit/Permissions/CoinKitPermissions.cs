@@ -19,14 +19,6 @@ namespace Lazy.Abp.CoinKit.Permissions
             public const string Delete = Default + ".Delete";
         }
 
-        public class CoinOrder
-        {
-            public const string Default = GroupName + ".CoinOrder";
-            public const string Management = Default + ".Management";
-            public const string Create = Default + ".Create";
-            public const string Delete = Default + ".Delete";
-        }
-
         public class CoinProduct
         {
             public const string Default = GroupName + ".CoinProduct";
@@ -68,6 +60,13 @@ namespace Lazy.Abp.CoinKit.Permissions
             public const string Update = Default + ".Update";
             public const string Management = Default + ".Management";
             public const string BindInviter = Default + ".BindInviter";
+        }
+
+        public class CoinPurchased
+        {
+            public const string Default = GroupName + ".CoinPurchased";
+            public const string Create = Default + ".Create";
+            public const string Delete = Default + ".Delete";
         }
     }
 }

@@ -4,6 +4,7 @@ using Volo.Abp.EntityFrameworkCore;
 using Lazy.Abp.CoinKit.Coins;
 using Lazy.Abp.CoinKit.Coupons;
 using Lazy.Abp.CoinKit.Spreads;
+using Lazy.Abp.CoinKit.CoinPurchaseds;
 
 namespace Lazy.Abp.CoinKit.EntityFrameworkCore
 {
@@ -14,12 +15,12 @@ namespace Lazy.Abp.CoinKit.EntityFrameworkCore
          * DbSet<Question> Questions { get; }
          */
         DbSet<CoinAction> CoinActions { get; set; }
-        DbSet<CoinOrder> CoinOrders { get; set; }
         DbSet<CoinProduct> CoinProducts { get; set; }
         DbSet<CoinWallet> CoinWallets { get; set; }
         DbSet<CoinWalletLog> CoinWalletLogs { get; set; }
         DbSet<Coupon> Coupons { get; set; }
         DbSet<SpreadInvite> SpreadInvites { get; set; }
         DbSet<SpreadUser> SpreadUsers { get; set; }
+        DbSet<CoinPurchased> CoinPurchaseds { get; set; }
     }
 }

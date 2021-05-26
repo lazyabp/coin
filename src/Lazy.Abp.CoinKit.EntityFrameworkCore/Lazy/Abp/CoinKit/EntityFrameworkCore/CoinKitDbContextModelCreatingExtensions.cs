@@ -1,3 +1,4 @@
+using Lazy.Abp.CoinKit.CoinPurchaseds;
 using Lazy.Abp.CoinKit.Spreads;
 using Lazy.Abp.CoinKit.Coupons;
 using Lazy.Abp.CoinKit.Coins;
@@ -52,18 +53,6 @@ namespace Lazy.Abp.CoinKit.EntityFrameworkCore
 
                 /* Configure more properties here */
             });
-
-
-            builder.Entity<CoinOrder>(b =>
-            {
-                b.ToTable(options.TablePrefix + "CoinOrders", options.Schema);
-                b.ConfigureByConvention();
-
-                b.HasIndex(q => q.OrderNo);
-                b.HasIndex(q => q.TradeNo);
-                /* Configure more properties here */
-            });
-
 
             builder.Entity<CoinProduct>(b =>
             {
@@ -122,6 +111,16 @@ namespace Lazy.Abp.CoinKit.EntityFrameworkCore
 
                 b.HasIndex(q => q.UserId).IsUnique();
                 b.HasIndex(q => q.SpreadCode).IsUnique();
+                /* Configure more properties here */
+            });
+
+
+            builder.Entity<CoinPurchased>(b =>
+            {
+                b.ToTable(options.TablePrefix + "CoinPurchaseds", options.Schema);
+                b.ConfigureByConvention();
+
+                b.HasIndex(q => q.UserId);
                 /* Configure more properties here */
             });
         }
