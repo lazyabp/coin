@@ -13,7 +13,7 @@ namespace Lazy.Abp.CoinKit.Coins
     [RemoteService(Name = CoinKitRemoteServiceConsts.RemoteServiceName)]
     [Area("coin")]
     [ControllerName("CoinWalletLog")]
-    [Route("api/coin/coin-wallet-logs")]
+    [Route("api/coin/wallet-logs")]
     public class CoinWalletLogController : CoinKitController, ICoinWalletLogAppService
     {
         private readonly ICoinWalletLogAppService _service;

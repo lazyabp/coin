@@ -1,4 +1,4 @@
-using Lazy.Abp.CoinKit.CoinPurchaseds;
+using Lazy.Abp.CoinKit.Recharges;
 using Lazy.Abp.CoinKit.Spreads;
 using Lazy.Abp.CoinKit.Coupons;
 using Lazy.Abp.CoinKit.Coins;
@@ -28,7 +28,7 @@ namespace Lazy.Abp.CoinKit.EntityFrameworkCore
                 options.AddRepository<Coupon, CouponRepository>();
                 options.AddRepository<SpreadInvite, SpreadInviteRepository>();
                 options.AddRepository<SpreadUser, SpreadUserRepository>();
-                options.AddRepository<CoinPurchased, CoinPurchasedRepository>();
+                options.AddRepository<CoinRechargeHistory, CoinRechargeHistoryRepository>();
             });
         }
     }

@@ -4,8 +4,8 @@ using Lazy.Abp.CoinKit.Coupons;
 using Lazy.Abp.CoinKit.Coupons.Dtos;
 using Lazy.Abp.CoinKit.Spreads;
 using Lazy.Abp.CoinKit.Spreads.Dtos;
-using Lazy.Abp.CoinKit.CoinPurchaseds;
-using Lazy.Abp.CoinKit.CoinPurchaseds.Dtos;
+using Lazy.Abp.CoinKit.Recharges;
+using Lazy.Abp.CoinKit.Recharges.Dtos;
 using AutoMapper;
 
 namespace Lazy.Abp.CoinKit
@@ -24,7 +24,7 @@ namespace Lazy.Abp.CoinKit
             CreateMap<Coupon, CouponDto>();
             CreateMap<SpreadInvite, SpreadInviteDto>();
             CreateMap<SpreadUser, SpreadUserDto>();
-            CreateMap<CoinPurchased, CoinPurchasedDto>();
+            CreateMap<CoinRechargeHistory, CoinRechargeHistoryDto>();
         }
     }
 }

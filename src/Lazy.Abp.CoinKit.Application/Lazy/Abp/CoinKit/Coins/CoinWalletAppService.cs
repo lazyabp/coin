@@ -7,16 +7,22 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.Users;
 using System.Collections.Generic;
+using Volo.Abp;
 
 namespace Lazy.Abp.CoinKit.Coins
 {
     public class CoinWalletAppService : ApplicationService, ICoinWalletAppService
     {
         private readonly ICoinWalletRepository _repository;
-        
-        public CoinWalletAppService(ICoinWalletRepository repository)
+        private readonly CoinWalletLogManager _coinWalletLogManager;
+
+        public CoinWalletAppService(
+            ICoinWalletRepository repository,
+            CoinWalletLogManager coinWalletLogManager
+        )
         {
             _repository = repository;
+            _coinWalletLogManager = coinWalletLogManager;
         }
 
         [Authorize]
@@ -47,11 +53,42 @@ namespace Lazy.Abp.CoinKit.Coins
             );
         }
 
-        [Authorize(CoinKitPermissions.CoinWallet.Reset)]
-        public async Task<CoinWalletDto> ResetAsync(Guid userId)
+        /// <summary>
+        /// 增加账户积点
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [Authorize(CoinKitPermissions.CoinWallet.Adjustment)]
+        public async Task<CoinWalletDto> IncreaseCoinAsync(Guid userId, CoinAdjustmentRequestDto input)
         {
             var wallet = await _repository.GetByUserIdAsync(userId);
+            input.Amount = Math.Abs(input.Amount);
+            var balance = wallet.Balance + input.Amount;
+
             wallet.Reset();
+            await _coinWalletLogManager.WriteLogForInAsync(wallet.TenantId, wallet.UserId, "IncreaseCoin", input.Amount, balance, L["IncreaseCoin"], input.Reason);
+
+            return ObjectMapper.Map<CoinWallet, CoinWalletDto>(wallet);
+        }
+
+        /// <summary>
+        /// 扣除账户积点
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [Authorize(CoinKitPermissions.CoinWallet.Adjustment)]
+        public async Task<CoinWalletDto> DecreaseCoinAsync(Guid userId, CoinAdjustmentRequestDto input)
+        {
+            var wallet = await _repository.GetByUserIdAsync(userId);
+            input.Amount = Math.Abs(input.Amount);
+            var balance = wallet.Balance - input.Amount;
+            if (balance < 0)
+                throw new UserFriendlyException(L["InsufficientBalance"]);
+
+            wallet.Reset();
+            await _coinWalletLogManager.WriteLogForOutAsync(wallet.TenantId, wallet.UserId, "DecreaseCoin", input.Amount, balance, L["DecreaseCoin"], input.Reason);
 
             return ObjectMapper.Map<CoinWallet, CoinWalletDto>(wallet);
         }

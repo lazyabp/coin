@@ -4,7 +4,7 @@ using Volo.Abp.EntityFrameworkCore;
 using Lazy.Abp.CoinKit.Coins;
 using Lazy.Abp.CoinKit.Coupons;
 using Lazy.Abp.CoinKit.Spreads;
-using Lazy.Abp.CoinKit.CoinPurchaseds;
+using Lazy.Abp.CoinKit.Recharges;
 
 namespace Lazy.Abp.CoinKit.EntityFrameworkCore
 {
@@ -21,7 +21,7 @@ namespace Lazy.Abp.CoinKit.EntityFrameworkCore
         public DbSet<Coupon> Coupons { get; set; }
         public DbSet<SpreadInvite> SpreadInvites { get; set; }
         public DbSet<SpreadUser> SpreadUsers { get; set; }
-        public DbSet<CoinPurchased> CoinPurchaseds { get; set; }
+        public DbSet<CoinRechargeHistory> CoinRechargeHistories { get; set; }
 
         public CoinKitDbContext(DbContextOptions<CoinKitDbContext> options) 
             : base(options)

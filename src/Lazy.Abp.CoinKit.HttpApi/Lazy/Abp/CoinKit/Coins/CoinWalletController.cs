@@ -13,7 +13,7 @@ namespace Lazy.Abp.CoinKit.Coins
     [RemoteService(Name = CoinKitRemoteServiceConsts.RemoteServiceName)]
     [Area("coin")]
     [ControllerName("CoinWallet")]
-    [Route("api/coin/coin-wallets")]
+    [Route("api/coin/wallets")]
     public class CoinWalletController : CoinKitController, ICoinWalletAppService
     {
         private readonly ICoinWalletAppService _service;
@@ -38,10 +38,17 @@ namespace Lazy.Abp.CoinKit.Coins
         }
 
         [HttpPut]
-        [Route("{userId}/reset")]
-        public Task<CoinWalletDto> ResetAsync(Guid userId)
+        [Route("{userId}/increase-coins")]
+        public Task<CoinWalletDto> IncreaseCoinAsync(Guid userId, CoinAdjustmentRequestDto input)
         {
-            return _service.ResetAsync(userId);
+            return _service.IncreaseCoinAsync(userId, input);
+        }
+
+        [HttpPut]
+        [Route("{userId}/decrease-coins")]
+        public Task<CoinWalletDto> DecreaseCoinAsync(Guid userId, CoinAdjustmentRequestDto input)
+        {
+            return _service.DecreaseCoinAsync(userId, input);
         }
     }
 }

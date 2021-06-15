@@ -22,7 +22,7 @@ namespace Lazy.Abp.CoinKit.Permissions
 
             var coinWalletPermission = myGroup.AddPermission(CoinKitPermissions.CoinWallet.Default, L("Permission:CoinWallet"));
             coinWalletPermission.AddChild(CoinKitPermissions.CoinWallet.Management, L("Permission:Management"));
-            coinWalletPermission.AddChild(CoinKitPermissions.CoinWallet.Reset, L("Permission:Reset"));
+            coinWalletPermission.AddChild(CoinKitPermissions.CoinWallet.Adjustment, L("Permission:Adjustment"));
 
             var coinWalletLogPermission = myGroup.AddPermission(CoinKitPermissions.CoinWalletLog.Default, L("Permission:CoinWalletLog"));
             coinWalletLogPermission.AddChild(CoinKitPermissions.CoinWalletLog.Management, L("Permission:Management"));
@@ -40,9 +40,9 @@ namespace Lazy.Abp.CoinKit.Permissions
             spreadUserPermission.AddChild(CoinKitPermissions.SpreadUser.Update, L("Permission:Update"));
             spreadUserPermission.AddChild(CoinKitPermissions.SpreadUser.BindInviter, L("Permission:BindInviter"));
 
-            var coinPurchasedPermission = myGroup.AddPermission(CoinKitPermissions.CoinPurchased.Default, L("Permission:CoinPurchased"));
-            coinPurchasedPermission.AddChild(CoinKitPermissions.CoinPurchased.Create, L("Permission:Create"));
-            coinPurchasedPermission.AddChild(CoinKitPermissions.CoinPurchased.Delete, L("Permission:Delete"));
+            var coinRechargeHistoryPermission = myGroup.AddPermission(CoinKitPermissions.CoinRechargeHistory.Default, L("Permission:CoinRechargeHistory"));
+            coinRechargeHistoryPermission.AddChild(CoinKitPermissions.CoinRechargeHistory.Create, L("Permission:Create"));
+            coinRechargeHistoryPermission.AddChild(CoinKitPermissions.CoinRechargeHistory.Delete, L("Permission:Delete"));
         }
 
         private static LocalizableString L(string name)

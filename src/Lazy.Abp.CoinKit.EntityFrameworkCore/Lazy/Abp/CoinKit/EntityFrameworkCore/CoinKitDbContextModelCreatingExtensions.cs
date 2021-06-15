@@ -1,4 +1,4 @@
-using Lazy.Abp.CoinKit.CoinPurchaseds;
+using Lazy.Abp.CoinKit.Recharges;
 using Lazy.Abp.CoinKit.Spreads;
 using Lazy.Abp.CoinKit.Coupons;
 using Lazy.Abp.CoinKit.Coins;
@@ -115,9 +115,9 @@ namespace Lazy.Abp.CoinKit.EntityFrameworkCore
             });
 
 
-            builder.Entity<CoinPurchased>(b =>
+            builder.Entity<CoinRechargeHistory>(b =>
             {
-                b.ToTable(options.TablePrefix + "CoinPurchaseds", options.Schema);
+                b.ToTable(options.TablePrefix + "CoinRechargeHistories", options.Schema);
                 b.ConfigureByConvention();
 
                 b.HasIndex(q => q.UserId);

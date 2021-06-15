@@ -31,7 +31,7 @@ namespace Lazy.Abp.CoinKit.Permissions
         {
             public const string Default = GroupName + ".CoinWallet";
             public const string Management = Default + ".Management";
-            public const string Reset = Default + ".Reset";
+            public const string Adjustment = Default + ".Adjustment";
         }
 
         public class CoinWalletLog
@@ -62,9 +62,9 @@ namespace Lazy.Abp.CoinKit.Permissions
             public const string BindInviter = Default + ".BindInviter";
         }
 
-        public class CoinPurchased
+        public class CoinRechargeHistory
         {
-            public const string Default = GroupName + ".CoinPurchased";
+            public const string Default = GroupName + ".CoinRechargeHistory";
             public const string Create = Default + ".Create";
             public const string Delete = Default + ".Delete";
         }

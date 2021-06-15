@@ -1,4 +1,4 @@
-﻿using Lazy.Abp.CoinKit.Coins.Dtos;
+﻿using Lazy.Abp.CoinKit.Recharges.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,43 +8,43 @@ using System.Threading.Tasks;
 using Volo.Abp;
 using Volo.Abp.Application.Dtos;
 
-namespace Lazy.Abp.CoinKit.Coins
+namespace Lazy.Abp.CoinKit.Recharges
 {
     [RemoteService(Name = CoinKitRemoteServiceConsts.RemoteServiceName)]
     [Area("coin")]
-    [ControllerName("CoinAction")]
-    [Route("api/coin/actions")]
-    public class CoinActionController : CoinKitController, ICoinActionAppService
+    [ControllerName("CoinProduct")]
+    [Route("api/coin/products")]
+    public class CoinProductController : CoinKitController, ICoinProductAppService
     {
-        private readonly ICoinActionAppService _service;
+        private readonly ICoinProductAppService _service;
 
-        public CoinActionController(ICoinActionAppService service)
+        public CoinProductController(ICoinProductAppService service)
         {
             _service = service;
         }
 
         [HttpGet]
         [Route("{id}")]
-        public Task<CoinActionDto> GetAsync(Guid id)
+        public Task<CoinProductDto> GetAsync(Guid id)
         {
             return _service.GetAsync(id);
         }
 
         [HttpGet]
-        public Task<PagedResultDto<CoinActionDto>> GetListAsync(CoinActionListRequestDto input)
+        public Task<PagedResultDto<CoinProductDto>> GetListAsync(CoinProductListRequestDto input)
         {
             return _service.GetListAsync(input);
         }
 
         [HttpPost]
-        public Task<CoinActionDto> CreateAsync(CoinActionCreateUpdateDto input)
+        public Task<CoinProductDto> CreateAsync(CoinProductCreateUpdateDto input)
         {
             return _service.CreateAsync(input);
         }
 
         [HttpPut]
         [Route("{id}")]
-        public Task<CoinActionDto> UpdateAsync(Guid id, CoinActionCreateUpdateDto input)
+        public Task<CoinProductDto> UpdateAsync(Guid id, CoinProductCreateUpdateDto input)
         {
             return _service.UpdateAsync(id, input);
         }
