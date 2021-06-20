@@ -44,6 +44,9 @@ namespace Lazy.Abp.CoinKit.Recharges
         {
             var product = new CoinProduct(GuidGenerator.Create(), CurrentUser.TenantId, input.Name, input.Thumbnail,
                 input.RetailPrice, input.SalePrice, input.CostCoins, input.Description, input.IsActive, input.DisplayOrder);
+
+            product.SetSoldQuantity(input.SoldQuantity);
+
             await _repository.InsertAsync(product);
 
             return ObjectMapper.Map<CoinProduct, CoinProductDto>(product);
@@ -54,6 +57,7 @@ namespace Lazy.Abp.CoinKit.Recharges
         {
             var product = await _repository.GetAsync(id);
             product.Update(input.Name, input.Thumbnail, input.RetailPrice, input.SalePrice, input.CostCoins, input.Description, input.IsActive, input.DisplayOrder);
+            product.SetSoldQuantity(input.SoldQuantity);
 
             return ObjectMapper.Map<CoinProduct, CoinProductDto>(product);
         }

@@ -30,8 +30,12 @@ namespace Lazy.Abp.CoinKit.Spreads
         [Authorize]
         public async Task<PagedResultDto<SpreadInviteDto>> GetListAsync(SpreadInviteListRequestDto input)
         {
-            var count = await _repository.GetCountAsync(CurrentUser.GetId(), input.Filter);
-            var list = await _repository.GetListAsync(input.Sorting, input.MaxResultCount, input.SkipCount, CurrentUser.GetId(), input.Filter);
+            Guid? userId = null;
+            if (false == await AuthorizationService.IsGrantedAsync(CoinKitPermissions.SpreadInvite.Management))
+                userId = CurrentUser.GetId();
+
+            var count = await _repository.GetCountAsync(userId, input.Filter);
+            var list = await _repository.GetListAsync(input.Sorting, input.MaxResultCount, input.SkipCount, userId, input.Filter);
 
             return new PagedResultDto<SpreadInviteDto>(
                 count,

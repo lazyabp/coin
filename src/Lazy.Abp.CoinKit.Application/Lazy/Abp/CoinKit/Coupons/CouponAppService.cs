@@ -46,7 +46,9 @@ namespace Lazy.Abp.CoinKit.Coupons
 
             for (int i = 0; i < input.Count; i++)
             {
-                var coupon = new Coupon(GuidGenerator.Create(), CurrentUser.TenantId, "", input.Coins, true);
+                var serialNumber = StringHelper.RandString("CPN-", 12, 1);
+
+                var coupon = new Coupon(GuidGenerator.Create(), CurrentUser.TenantId, serialNumber, input.Coins, true);
 
                 coupons.Add(coupon);
             }
@@ -58,7 +60,9 @@ namespace Lazy.Abp.CoinKit.Coupons
         [Authorize(CoinKitPermissions.Coupon.Create)]
         public async Task<CouponDto> CreateAsync(CouponCreateUpdateDto input)
         {
-            var coupon = new Coupon(GuidGenerator.Create(), CurrentUser.TenantId, "", input.AmountCoins, input.IsActive);
+            var serialNumber = StringHelper.RandString("CPN-", 12, 1);
+
+            var coupon = new Coupon(GuidGenerator.Create(), CurrentUser.TenantId, serialNumber, input.AmountCoins, input.IsActive);
 
             await _repository.InsertAsync(coupon);
 

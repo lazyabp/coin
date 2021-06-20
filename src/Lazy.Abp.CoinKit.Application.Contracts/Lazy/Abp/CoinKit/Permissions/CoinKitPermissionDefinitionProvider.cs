@@ -33,6 +33,7 @@ namespace Lazy.Abp.CoinKit.Permissions
             couponPermission.AddChild(CoinKitPermissions.Coupon.Delete, L("Permission:Delete"));
 
             var spreadInvitePermission = myGroup.AddPermission(CoinKitPermissions.SpreadInvite.Default, L("Permission:SpreadInvite"));
+            spreadInvitePermission.AddChild(CoinKitPermissions.SpreadInvite.Management, L("Permission:Management"));
             spreadInvitePermission.AddChild(CoinKitPermissions.SpreadInvite.Delete, L("Permission:Delete"));
 
             var spreadUserPermission = myGroup.AddPermission(CoinKitPermissions.SpreadUser.Default, L("Permission:SpreadUser"));

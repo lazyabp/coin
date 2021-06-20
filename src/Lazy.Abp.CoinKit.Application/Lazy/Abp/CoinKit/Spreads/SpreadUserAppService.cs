@@ -26,7 +26,9 @@ namespace Lazy.Abp.CoinKit.Spreads
 
             if (null == spreadUser)
             {
-                spreadUser = new SpreadUser(GuidGenerator.Create(), CurrentUser.TenantId, CurrentUser.GetId(), "");
+                var spreadCode = StringHelper.RandString("L", 10, 1);
+
+                spreadUser = new SpreadUser(GuidGenerator.Create(), CurrentUser.TenantId, CurrentUser.GetId(), spreadCode);
 
                 await _repository.InsertAsync(spreadUser);
             }

@@ -51,6 +51,7 @@ namespace Lazy.Abp.CoinKit.Permissions
         public class SpreadInvite
         {
             public const string Default = GroupName + ".SpreadInvite";
+            public const string Management = Default + ".Management";
             public const string Delete = Default + ".Delete";
         }
 

@@ -66,7 +66,7 @@ namespace Lazy.Abp.CoinKit.Coins
             input.Amount = Math.Abs(input.Amount);
             var balance = wallet.Balance + input.Amount;
 
-            wallet.Reset();
+            wallet.IncBalance(input.Amount);
             await _coinWalletLogManager.WriteLogForInAsync(wallet.TenantId, wallet.UserId, "IncreaseCoin", input.Amount, balance, L["IncreaseCoin"], input.Reason);
 
             return ObjectMapper.Map<CoinWallet, CoinWalletDto>(wallet);
@@ -87,7 +87,7 @@ namespace Lazy.Abp.CoinKit.Coins
             if (balance < 0)
                 throw new UserFriendlyException(L["InsufficientBalance"]);
 
-            wallet.Reset();
+            wallet.DecBalance(input.Amount);
             await _coinWalletLogManager.WriteLogForOutAsync(wallet.TenantId, wallet.UserId, "DecreaseCoin", input.Amount, balance, L["DecreaseCoin"], input.Reason);
 
             return ObjectMapper.Map<CoinWallet, CoinWalletDto>(wallet);
