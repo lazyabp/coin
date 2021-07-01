@@ -10,6 +10,8 @@ namespace Lazy.Abp.CoinKit.Coins
     {
         Task<CoinWallet> GetByUserIdAsync(Guid userId, CancellationToken cancellationToken = default);
 
+        Task<List<CoinWallet>> GetByUserIdAsync(IEnumerable<Guid> userIds, CancellationToken cancellationToken = default);
+
         Task<long> GetCountAsync(
             Guid? userId = null,
             decimal? minBalance = null,

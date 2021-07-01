@@ -23,7 +23,7 @@ namespace Lazy.Abp.CoinKit.Recharges
 
             return await dbSet
                 .Where(q => ids.Contains(q.Id))
-                .ToListAsync(cancellationToken);
+                .ToListAsync(GetCancellationToken(cancellationToken));
         }
 
         public async Task<long> GetCountAsync(
@@ -39,7 +39,7 @@ namespace Lazy.Abp.CoinKit.Recharges
             var query = await GetListQuery(isActive, minPrice, maxPrice, creationAfter, creationBefore, filter);
 
             return await query
-                .LongCountAsync(cancellationToken);
+                .LongCountAsync(GetCancellationToken(cancellationToken));
         }
 
         public async Task<List<CoinProduct>> GetListAsync(
@@ -60,7 +60,7 @@ namespace Lazy.Abp.CoinKit.Recharges
             return await query
                 .OrderBy(sorting ?? "creationTime DESC")
                 .PageBy(skipCount, maxResultCount)
-                .ToListAsync(cancellationToken);
+                .ToListAsync(GetCancellationToken(cancellationToken));
         }
 
         protected async Task<IQueryable<CoinProduct>> GetListQuery(

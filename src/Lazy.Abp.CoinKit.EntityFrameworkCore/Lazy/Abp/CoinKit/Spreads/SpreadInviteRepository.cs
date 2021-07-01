@@ -23,7 +23,7 @@ namespace Lazy.Abp.CoinKit.Spreads
 
             return await dbSet
                 .Where(q => q.UserId == userId)
-                .ToListAsync(cancellationToken);
+                .ToListAsync(GetCancellationToken(cancellationToken));
         }
 
         public async Task<long> GetCountAsync(
@@ -35,7 +35,7 @@ namespace Lazy.Abp.CoinKit.Spreads
             var query = await GetListQuery(userId, filter);
 
             return await query
-                .LongCountAsync(cancellationToken);
+                .LongCountAsync(GetCancellationToken(cancellationToken));
         }
 
         public async Task<List<SpreadInvite>> GetListAsync(
@@ -52,7 +52,7 @@ namespace Lazy.Abp.CoinKit.Spreads
             return await query
                 .OrderBy(sorting ?? "creationTime DESC")
                 .PageBy(skipCount, maxResultCount)
-                .ToListAsync(cancellationToken);
+                .ToListAsync(GetCancellationToken(cancellationToken));
         }
 
         protected async Task<IQueryable<SpreadInvite>> GetListQuery(

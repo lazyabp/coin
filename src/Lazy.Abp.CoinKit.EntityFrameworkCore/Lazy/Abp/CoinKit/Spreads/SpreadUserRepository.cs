@@ -23,7 +23,7 @@ namespace Lazy.Abp.CoinKit.Spreads
 
             return await dbSet
                 .Where(q => q.SpreadCode == spreadCode)
-                .FirstOrDefaultAsync(cancellationToken);
+                .FirstOrDefaultAsync(GetCancellationToken(cancellationToken));
         }
 
         public async Task<SpreadUser> GetByUserIdAsync(Guid userId, CancellationToken cancellationToken = default)
@@ -32,7 +32,7 @@ namespace Lazy.Abp.CoinKit.Spreads
 
             return await dbSet
                 .Where(q => q.UserId == userId)
-                .FirstOrDefaultAsync(cancellationToken);
+                .FirstOrDefaultAsync(GetCancellationToken(cancellationToken));
         }
 
         public async Task<long> GetCountAsync(
@@ -45,7 +45,7 @@ namespace Lazy.Abp.CoinKit.Spreads
             var query = await GetListQuery(userId, inviterUserId, filter);
 
             return await query
-                .LongCountAsync(cancellationToken);
+                .LongCountAsync(GetCancellationToken(cancellationToken));
         }
 
         public async Task<List<SpreadUser>> GetListAsync(
@@ -63,7 +63,7 @@ namespace Lazy.Abp.CoinKit.Spreads
             return await query
                 .OrderBy(sorting ?? "creationTime DESC")
                 .PageBy(skipCount, maxResultCount)
-                .ToListAsync(cancellationToken);
+                .ToListAsync(GetCancellationToken(cancellationToken));
         }
 
         protected async Task<IQueryable<SpreadUser>> GetListQuery(

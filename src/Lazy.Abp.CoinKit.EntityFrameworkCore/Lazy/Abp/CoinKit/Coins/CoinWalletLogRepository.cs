@@ -32,7 +32,7 @@ namespace Lazy.Abp.CoinKit.Coins
             var query = await GetListQuery(userId, isOut, typeName, minAmount, maxAmount, creationAfter, creationBefore, filter);
 
             return await query
-                .LongCountAsync(cancellationToken);
+                .LongCountAsync(GetCancellationToken(cancellationToken));
         }
 
         public async Task<List<CoinWalletLog>> GetListAsync(
@@ -55,7 +55,7 @@ namespace Lazy.Abp.CoinKit.Coins
             return await query
                 .OrderBy(sorting ?? "creationTime DESC")
                 .PageBy(skipCount, maxResultCount)
-                .ToListAsync(cancellationToken);
+                .ToListAsync(GetCancellationToken(cancellationToken));
         }
 
         protected async Task<IQueryable<CoinWalletLog>> GetListQuery(

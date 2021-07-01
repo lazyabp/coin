@@ -37,7 +37,7 @@ namespace Lazy.Abp.CoinKit.Recharges
             var query = await GetListQuery(userId, coinProductId, minPaidAmount, maxPaidAmount, creationAfter, creationBefore, filter);
 
             return await query
-                .LongCountAsync(cancellationToken);
+                .LongCountAsync(GetCancellationToken(cancellationToken));
         }
 
         public async Task<List<CoinRechargeHistory>> GetListAsync(
@@ -59,7 +59,7 @@ namespace Lazy.Abp.CoinKit.Recharges
             return await query
                 .OrderBy(sorting ?? "creationTime DESC")
                 .PageBy(skipCount, maxResultCount)
-                .ToListAsync(cancellationToken);
+                .ToListAsync(GetCancellationToken(cancellationToken));
         }
 
         protected async Task<IQueryable<CoinRechargeHistory>> GetListQuery(

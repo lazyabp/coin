@@ -1,7 +1,19 @@
 {
   "culture": "zh-Hans",
   "texts": {
-    "ManageYourProfile": "管理个人资料",
-    "SamplePageMessage": "CoinKit模块的示例页面"
+    "Permission:CoinKit": "积点管理",
+    "Permission:CoinAction": "积点事件",
+    "Permission:CoinProduct": "积点产品",
+    "Permission:CoinWallet": "积点钱包",
+    "Permission:CoinWalletLog": "积点日志",
+    "Permission:Coupon": "积点点券",
+    "Permission:SpreadInvite": "推广邀请",
+    "Permission:SpreadUser": "推广用户",
+    "Permission:CoinRechargeHistory": "充值记录",
+    "Permission:Management": "管理",
+    "Permission:BindInviter": "绑定邀请人",
+    "Permission:Create": "创建",
+    "Permission:Update": "编辑",
+    "Permission:Delete": "删除"
   }
 }

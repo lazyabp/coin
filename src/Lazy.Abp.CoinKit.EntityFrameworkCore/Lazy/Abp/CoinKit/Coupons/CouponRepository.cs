@@ -23,7 +23,7 @@ namespace Lazy.Abp.CoinKit.Coupons
 
             return await dbSet
                 .Where(q => q.SerialNumber == serialNumber)
-                .FirstOrDefaultAsync(cancellationToken);
+                .FirstOrDefaultAsync(GetCancellationToken(cancellationToken));
         }
 
         public async Task<int> GetCountAsync(
@@ -36,7 +36,7 @@ namespace Lazy.Abp.CoinKit.Coupons
             var query = await GetListQuery(isActive, isClaimed, filter);
 
             return await query
-                .CountAsync(cancellationToken);
+                .CountAsync(GetCancellationToken(cancellationToken));
         }
 
         public async Task<List<Coupon>> GetListAsync(
@@ -54,7 +54,7 @@ namespace Lazy.Abp.CoinKit.Coupons
             return await query
                 .OrderBy(sorting ?? "creationTime DESC")
                 .PageBy(skipCount, maxResultCount)
-                .ToListAsync(cancellationToken);
+                .ToListAsync(GetCancellationToken(cancellationToken));
         }
 
         protected async Task<IQueryable<Coupon>> GetListQuery(

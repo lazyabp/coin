@@ -19,11 +19,16 @@ namespace Lazy.Abp.CoinKit.Coins
 
         public async Task<CoinWallet> GetByUserIdAsync(Guid userId, CancellationToken cancellationToken = default)
         {
-            var dbSet = await GetDbSetAsync();
-
-            return await dbSet
+            return await (await GetDbSetAsync())
                 .Where(q => q.UserId == userId)
-                .FirstOrDefaultAsync(cancellationToken);
+                .FirstOrDefaultAsync(GetCancellationToken(cancellationToken));
+        }
+
+        public async Task<List<CoinWallet>> GetByUserIdAsync(IEnumerable<Guid> userIds, CancellationToken cancellationToken = default)
+        {
+            return await (await GetDbSetAsync())
+                .Where(q => userIds.Contains(q.UserId))
+                .ToListAsync(GetCancellationToken(cancellationToken));
         }
 
         public async Task<long> GetCountAsync(
@@ -37,7 +42,7 @@ namespace Lazy.Abp.CoinKit.Coins
             var query = await GetListQuery(userId, minBalance, maxBalance, filter);
 
             return await query
-                .LongCountAsync(cancellationToken);
+                .LongCountAsync(GetCancellationToken(cancellationToken));
         }
 
         public async Task<List<CoinWallet>> GetListAsync(
@@ -56,7 +61,7 @@ namespace Lazy.Abp.CoinKit.Coins
             return await query
                 .OrderBy(sorting ?? "creationTime DESC")
                 .PageBy(skipCount, maxResultCount)
-                .ToListAsync(cancellationToken);
+                .ToListAsync(GetCancellationToken(cancellationToken));
         }
 
         protected async Task<IQueryable<CoinWallet>> GetListQuery(
@@ -66,9 +71,7 @@ namespace Lazy.Abp.CoinKit.Coins
            string filter = null
        )
         {
-            var dbSet = await GetDbSetAsync();
-
-            return dbSet
+            return (await GetDbSetAsync())
                 .AsNoTracking()
                 .WhereIf(userId.HasValue, e => e.UserId == userId)
                 .WhereIf(minBalance.HasValue, e => e.Balance >= minBalance)

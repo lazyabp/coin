@@ -23,7 +23,7 @@ namespace Lazy.Abp.CoinKit.Coins
 
             return await dbSet
                 .Where(q => q.ActionType == actionType)
-                .FirstOrDefaultAsync(cancellationToken);
+                .FirstOrDefaultAsync(GetCancellationToken(cancellationToken));
         }
 
         public async Task<int> GetCountAsync(
@@ -35,7 +35,7 @@ namespace Lazy.Abp.CoinKit.Coins
             var query = await GetListQuery(actionType, filter);
 
             return await query
-                .CountAsync(cancellationToken);
+                .CountAsync(GetCancellationToken(cancellationToken));
         }
 
         public async Task<List<CoinAction>> GetListAsync(
@@ -52,7 +52,7 @@ namespace Lazy.Abp.CoinKit.Coins
             return await query
                 .OrderBy(sorting ?? "creationTime DESC")
                 .PageBy(skipCount, maxResultCount)
-                .ToListAsync(cancellationToken);
+                .ToListAsync(GetCancellationToken(cancellationToken));
         }
 
         protected async Task<IQueryable<CoinAction>> GetListQuery(

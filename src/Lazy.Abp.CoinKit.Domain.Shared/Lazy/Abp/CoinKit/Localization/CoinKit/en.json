@@ -1,7 +1,19 @@
 {
   "culture": "en",
   "texts": {
-    "ManageYourProfile":  "Manage your profile",
-    "SamplePageMessage": "A sample page for the CoinKit module"
+    "Permission:CoinKit": "Coin Management",
+    "Permission:CoinAction": "Coin Actions",
+    "Permission:CoinProduct": "Coin Products",
+    "Permission:CoinWallet": "Coin Wallets",
+    "Permission:CoinWalletLog": "Coin Logs",
+    "Permission:Coupon": "Coupons",
+    "Permission:SpreadInvite": "Spread Invites",
+    "Permission:SpreadUser": "Spread Users",
+    "Permission:CoinRechargeHistory": "Recharge Histories",
+    "Permission:Management": "Management",
+    "Permission:BindInviter": "Bind Inviter",
+    "Permission:Create": "Create",
+    "Permission:Update": "Update",
+    "Permission:Delete": "Delete"
   }
 }
